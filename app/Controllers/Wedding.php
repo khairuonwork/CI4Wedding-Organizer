@@ -18,7 +18,7 @@ class Wedding extends BaseController
         $data = [
             'nama_tamu' => $this->request->getPost('Nama'), //Nama ini dari Form di views/homepage.php
             'relasi_tamu' => $this->request->getPost('Relasi'), //Relasi ini dari Form di views/homepage.php
-            'pesan_tamu' => $this->request->getPost('Pesan') //Relasi ini dari Form di views/homepage.php
+            'pesan_tamu' => $this->request->getPost('Pesan') //Pesan ini dari Form di views/homepage.php
         ];
 
         if ($model->insert($data)) {
