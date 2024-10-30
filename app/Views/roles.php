@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List Tamu</title>
+    <title>Roles Panitia</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             padding-top: 40px;
-            background-color: #ffffff;
-            color: #000000;
             display: flex;
             flex-direction: row;
             margin: 0;
+            background-color: #ffffff; /* White background */
+            color: #000000; /* Black text color */
             position: relative;
         }
         /* Sidebar */
@@ -28,7 +28,6 @@
             transition: 0.5s; /* Transition effect */
             padding-top: 60px; /* Place the menu below the top */
         }
-
         .sidebar a {
             padding: 10px 15px; /* Padding for links */
             text-decoration: none; /* No underline */
@@ -37,12 +36,7 @@
             display: block; /* Make links appear below each other */
             transition: 0.3s; /* Transition effect for hover */
         }
-
-        .sidebar a:hover {
-            background-color: #575757; /* Darker background on hover */
-        }
-          /* Hamburger menu button */
-          .hamburger {
+        .hamburger {
             font-size: 30px; /* Size of the hamburger icon */
             cursor: pointer; /* Pointer cursor on hover */
             position: absolute; /* Position it at the top right */
@@ -67,8 +61,8 @@
     </style>
 </head>
 <body>
-    <!-- Hamburger Menu -->
-    <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
+      <!-- Hamburger Menu -->
+      <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
 
 <!-- Sidebar -->
 <div class="sidebar" id="mySidebar">
@@ -80,33 +74,48 @@
     <a href="<?= base_url('/warning') ?>">Pesan Darurat</a>
 </div>
     <div class="container mt-5">
-        <h1 class="text-center mb-5">Daftar Kehadiran Tamu</h1>
-        
-        <div class="table-responsive">
+        <h1 class="text-center mb-5">Daftar Panitia</h1>
+
+        <form action="/wedding/addPanitia" method="post" class="form-row">
+            <div class="col">
+                <input type="text" name="nama" class="form-control" placeholder="Nama" required>
+            </div>
+            <div class="col">
+                <input type="text" name="tugas" class="form-control" placeholder="Tugas" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+        <div class="table-responsive mt-4">
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Nama Tamu</th>
-                        <th>Relasi Tamu</th>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Tugas</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if (!empty($datatamu)) : ?>
-                        <?php foreach ($datatamu as $tamu) : ?>
-                            <tr>
-                                <td><?= esc($tamu['nama_tamu']) ?></td>
-                                <td><?= esc($tamu['relasi_tamu']) ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else : ?>
-                        <tr><td colspan="2">No guests found.</td></tr>
-                    <?php endif; ?>
+                    <?php foreach ($panitia as $index => $item) : ?>
+                        <tr>
+                            <td><?= $index + 1 ?></td>
+                            <td><?= esc($item['nama_panitia']) ?></td>
+                            <td><?= esc($item['tugas_panitia']) ?></td>
+                            <td>
+                                <form action="/wedding/updatePanitia/<?= $item['id_panitia'] ?>" method="post" style="display: inline-block;">
+                                    <input type="text" name="nama" value="<?= esc($item['nama_panitia']) ?>" required>
+                                    <input type="text" name="tugas" value="<?= esc($item['tugas_panitia']) ?>" required>
+                                    <button type="submit" class="btn btn-success">Update</button>
+                                </form>
+                                <a href="/wedding/deletePanitia/<?= $item['id_panitia'] ?>" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
     </div>
-
-    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 

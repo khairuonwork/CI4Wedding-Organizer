@@ -10,6 +10,11 @@
         body {
             background-color: #ffffff; /* White background */
             color: #000000; /* Black text color */
+            padding-top: 40px;
+            display: flex;
+            flex-direction: row;
+            margin: 0;
+            position: relative;
         }
         #video {
             width: 100%;
@@ -43,10 +48,57 @@
         .btn-secondary:hover {
             background-color: #f0f0f0; /* Light grey on hover */
         }
+        /* Sidebar */
+        .sidebar {
+            height: 100%; /* Full-height */
+            width: 250px; /* Width of the sidebar */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */ 
+            top: 0; /* Stay at the top */
+            left: -250px; /* Initially hidden */
+            background-color: #000; /* Black background */
+            overflow-x: hidden; /* Disable horizontal scroll */
+            transition: 0.5s; /* Transition effect */
+            padding-top: 60px; /* Place the menu below the top */
+        }
+
+        .sidebar a {
+            padding: 10px 15px; /* Padding for links */
+            text-decoration: none; /* No underline */
+            font-size: 25px; /* Larger font size */
+            color: white; /* White text */
+            display: block; /* Make links appear below each other */
+            transition: 0.3s; /* Transition effect for hover */
+        }
+
+        .sidebar a:hover {
+            background-color: #575757; /* Darker background on hover */
+        }
+        /* Hamburger menu button */
+        .hamburger {
+            font-size: 30px; /* Size of the hamburger icon */
+            cursor: pointer; /* Pointer cursor on hover */
+            position: absolute; /* Position it at the top right */
+            top: 15px; /* Distance from top */
+            right: 15px; /* Distance from right */
+            z-index: 2; /* Sit above sidebar */
+            color: black; /* Black color for hamburger */
+        }
     </style>
 </head>
 <body>
+    <!-- Hamburger Menu -->
+    <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
 
+    <!-- Sidebar -->
+    <div class="sidebar" id="mySidebar">
+        <a href="<?= base_url('/capture') ?>">Capture</a>
+        <a href="<?= base_url('/datatamu') ?>">List Tamu</a>
+        <a href="<?= base_url('/rundown') ?>">Rundown</a>
+        <a href="<?= base_url('/about') ?>">About</a>
+        <a href="<?= base_url('/roles') ?>">Data Panitia</a>
+        <a href="<?= base_url('/warning') ?>">Pesan Darurat</a>
+    </div>
 <div class="container mt-5">
     <h1 class="text-center" style="padding-bottom: 30px;">Camera Capture</h1>
     <div class="text-center">
@@ -72,6 +124,7 @@
                 <img id="preview" class="img-fluid" alt="Captured Photo">
             </div>
             <div class="modal-footer">
+                <!-- <button id="mail" class="btn btn-danger"> Mail </button> -->
                 <button id="retake" class="btn btn-secondary">Retake</button>
                 <button id="save" class="btn btn-primary">Save</button>
             </div>
@@ -117,12 +170,27 @@ $(document).ready(function() {
         link.href = imageData;
         link.download = 'captured_image.png';
         link.click();
-    });
+    }); 
+
 });
+
 </script>
+<?php
+
+?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<script>
+        // Function to toggle sidebar visibility
+        function toggleSidebar() {
+            const sidebar = document.getElementById("mySidebar");
+            if (sidebar.style.left === "0px") {
+                sidebar.style.left = "-250px"; // Hide the sidebar
+            } else {
+                sidebar.style.left = "0px"; // Show the sidebar
+            }
+        }
+    </script>
 </body>
 </html>

@@ -22,7 +22,7 @@
             height: 100%; /* Full-height */
             width: 250px; /* Width of the sidebar */
             position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
+            z-index: 1; /* Sit on top */ 
             top: 0; /* Stay at the top */
             left: -250px; /* Initially hidden */
             background-color: #000; /* Black background */
@@ -108,11 +108,12 @@
 
     <!-- Sidebar -->
     <div class="sidebar" id="mySidebar">
-        <a href="<?= base_url('/capture') ?>">Photo</a>
-        <a href="<?= base_url('/list_tamu') ?>">List Tamu</a>
+        <a href="<?= base_url('/capture') ?>">Capture</a>
+        <a href="<?= base_url('/datatamu') ?>">List Tamu</a>
         <a href="<?= base_url('/rundown') ?>">Rundown</a>
         <a href="<?= base_url('/about') ?>">About</a>
-        <a href="<?= base_url('/') ?>">Next Feature</a>
+        <a href="<?= base_url('/roles') ?>">Data Panitia</a>
+        <a href="<?= base_url('/warning') ?>">Pesan Darurat</a>
     </div>
 
     <div class="main-content">
@@ -122,7 +123,7 @@
                 <p class="lead">Please fill out the guest form below.</p>
             </div>
 
-            <!-- Display success/error messages -->
+            <!-- success / error messages -->
             <div class="container mt-3">
                 <?php if (session()->getFlashdata('success')): ?>
                     <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
