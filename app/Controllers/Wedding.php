@@ -3,12 +3,12 @@
 namespace App\Controllers;
 
 use App\Models\ModelTamu;
-
+use App\Models\ModelPanitia;
 class Wedding extends BaseController
 {
     public function homepage()
     {
-        return view('homepage'); //Emika
+        return view('homepage'); 
     }
     //Logic homepage
     public function submit_tamu()
@@ -22,9 +22,9 @@ class Wedding extends BaseController
         ];
 
         if ($model->insert($data)) {
-            session()->setFlashdata('success', 'Data has been submitted successfully!');
+            session()->setFlashdata('success', 'Data Masuk!');
         } else {
-            session()->setFlashdata('error', 'There was an error submitting your data.');
+            session()->setFlashdata('error', 'Data Gagal Masuk!');
         }
 
         return redirect()->to('/capture'); // Redirect to the capture -> (wedding/capture, Wedding::capture (passing capture.php))
@@ -35,16 +35,400 @@ class Wedding extends BaseController
     {
         return view('capture');
     }
-    public function list_tamu()
+
+    //Break
+    // public function list_tamu()
+    // {
+    //     return view('list_tamu');
+    // }
+    public function list_fetching()
     {
-        return view('list_tamu');
+        //Menggunakan logic pagination dari bootstrap
+        $model = new ModelTamu();
+        $data['datatamu'] = $model->getTamu();
+    
+        return view('list_tamu', $data);
     }
+    
+    //Break
+    //Function untuk panitia
+    public function roles()
+    {
+        $model = new ModelPanitia();
+        $data['panitia'] = $model->findAll();
+        return view('roles', $data);
+    }
+
+    public function addPanitia()
+    {
+        $model = new ModelPanitia();
+        $model->insert([
+            'nama_panitia' => $this->request->getPost('nama'),
+            'tugas_panitia' => $this->request->getPost('tugas')
+        ]);
+
+        return redirect()->to('/roles');
+    }
+
+    public function updatePanitia($id)
+    {
+        $model = new ModelPanitia();
+        $model->update($id, [
+            'nama_panitia' => $this->request->getPost('nama'),
+            'tugas_panitia' => $this->request->getPost('tugas')
+        ]);
+
+        return redirect()->to('/roles');
+    }
+
+    public function deletePanitia($id)
+    {
+        $model = new ModelPanitia();
+        $model->delete($id);
+        return redirect()->to('/roles');
+    }
+
     public function rundown()
     {
         return view('rundown');
     }
     public function about()
     {
-        return view('about'); //Gheffira
+        return view('about'); //Gheffira & Emika
+    }
+    public function warning()
+    {
+        return view('warning'); //CRUD-> Database
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -93,11 +93,12 @@
 
     <!-- Sidebar -->
     <div class="sidebar" id="mySidebar">
-        <a href="<?= base_url('/capture') ?>">Photo</a>
-        <a href="<?= base_url('/list_tamu') ?>">List Tamu</a>
+    <a href="<?= base_url('/capture') ?>">Capture</a>
+        <a href="<?= base_url('/datatamu') ?>">List Tamu</a>
         <a href="<?= base_url('/rundown') ?>">Rundown</a>
         <a href="<?= base_url('/about') ?>">About</a>
-        <a href="<?= base_url('/') ?>">Next Feature</a>
+        <a href="<?= base_url('/roles') ?>">Data Panitia</a>
+        <a href="<?= base_url('/warning') ?>">Pesan Darurat</a>
     </div>
 
     <div class="main-content">
