@@ -45,6 +45,6 @@ class Wedding extends BaseController
     }
     public function about()
     {
-        return view('about'); //Gheffira
+        return view('about'); 
     }
 }

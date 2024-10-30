@@ -13,6 +13,9 @@ $routes->get('/wedding/capture', 'Wedding::capture');
 $routes->get('/wedding/list_tamu', 'Wedding::list_tamu');
 $routes->get('/wedding/rundown', 'Wedding::rundown');
 $routes->get('/wedding/about', 'Wedding::about');
+$routes->get('/about', 'About::index');
+$routes->get('/guest', 'Guest::index');  // Untuk menampilkan daftar tamu
+
 
 //ROUTES UNTUK POST
 $routes->post('/wedding', 'Wedding::submit_tamu');
