@@ -72,12 +72,14 @@
 
 <!-- Sidebar -->
 <div class="sidebar" id="mySidebar">
+    <a href="<?= base_url('/') ?>">Form Tamu</a>
     <a href="<?= base_url('/capture') ?>">Capture</a>
     <a href="<?= base_url('/datatamu') ?>">List Tamu</a>
     <a href="<?= base_url('/rundown') ?>">Rundown</a>
     <a href="<?= base_url('/about') ?>">About</a>
     <a href="<?= base_url('/roles') ?>">Data Panitia</a>
     <a href="<?= base_url('/warning') ?>">Pesan Darurat</a>
+    <a href="<?= base_url('/pesan') ?>">Pesan Tamu</a>
 </div>
     <div class="container mt-5">
         <h1 class="text-center mb-5">Daftar Kehadiran Tamu</h1>
@@ -111,13 +113,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Function to toggle sidebar visibility
         function toggleSidebar() {
             const sidebar = document.getElementById("mySidebar");
             if (sidebar.style.left === "0px") {
-                sidebar.style.left = "-250px"; // Hide the sidebar
+                sidebar.style.left = "-250px"; 
             } else {
-                sidebar.style.left = "0px"; // Show the sidebar
+                sidebar.style.left = "0px"; 
             }
         }
     </script>

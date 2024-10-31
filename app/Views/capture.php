@@ -92,12 +92,14 @@
 
     <!-- Sidebar -->
     <div class="sidebar" id="mySidebar">
+        <a href="<?= base_url('/') ?>">Form Tamu</a>
         <a href="<?= base_url('/capture') ?>">Capture</a>
         <a href="<?= base_url('/datatamu') ?>">List Tamu</a>
         <a href="<?= base_url('/rundown') ?>">Rundown</a>
         <a href="<?= base_url('/about') ?>">About</a>
         <a href="<?= base_url('/roles') ?>">Data Panitia</a>
         <a href="<?= base_url('/warning') ?>">Pesan Darurat</a>
+        <a href="<?= base_url('/warning') ?>">Pesan Tamu</a>
     </div>
 <div class="container mt-5">
     <h1 class="text-center" style="padding-bottom: 30px;">Camera Capture</h1>
