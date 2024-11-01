@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(to right, #000000, #ffffff); /* Retain original gradient */
+            background: linear-gradient(to right, #000000, #ffffff);
             color: #000000;
             padding-top: 40px;
             margin: 0;
@@ -18,7 +18,6 @@
             height: 100%;
             width: 250px;
             position: fixed;
-            z-index: 1;
             top: 0;
             left: -250px;
             background-color: #000;
@@ -29,7 +28,7 @@
         .sidebar a {
             padding: 10px 15px;
             text-decoration: none;
-            font-size: 18px; /* Adjust font size */
+            font-size: 18px;
             color: white;
             display: block;
             transition: 0.3s;
@@ -60,31 +59,65 @@
             max-width: 30%;
         }
         .content-wrapper {
-            padding-top: 210px; /* Maintain spacing */
+            padding-top: 210px;
         }
         .about-container {
-            margin: 40px auto;
+            margin: 40px auto 60px;
             padding: 20px;
             max-width: 800px;
             text-align: center;
-            background-color: #f5f5f5; /* Grey background */
-            border: 2px solid #000; /* Black outline */
+            background-color: #f5f5f5;
+            border: 2px solid #000;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 8px; /* Rounded corners */
+            border-radius: 8px;
         }
         h1, h2 {
-            font-family: 'Playfair Display', serif; /* Elegant font for headings */
-            color: #333; /* Darker color for headings */
+            font-family: 'Playfair Display', serif;
+            color: #333;
         }
         p {
-            font-family: 'Open Sans', sans-serif; /* Clean font for paragraphs */
-            color: #555; /* Slightly lighter color for text */
-            line-height: 1.6; /* Improved line height for readability */
+            font-family: 'Open Sans', sans-serif;
+            color: #555;
+            line-height: 1.6;
+        }
+        .card-deck {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .card {
+            width: 120px;
+            padding: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 5px;
+        }
+        .card-title {
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+            font-weight: bold;
+            color: #333;
+        }
+        .card-text {
+            font-size: 0.8rem;
+            color: #666;
         }
     </style>
 </head>
 <body>
+    <!-- Hamburger Menu -->
     <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
+
+    <!-- Sidebar -->
     <div class="sidebar" id="mySidebar">
         <a href="<?= base_url('/') ?>">Form Tamu</a>
         <a href="<?= base_url('/capture') ?>">Capture</a>
@@ -115,17 +148,37 @@
         </div>
     </div>
 
+    <div class="card-deck">
+        <div class="card">
+            <img src="/daffa.png" class="card-img-top" alt="Daffa">
+            <div class="card-body">
+                <h5 class="card-title">223443007</h5>
+                <p class="card-text">Daffa Khairul Ammar</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/mika.png" class="card-img-top" alt="Emika">
+            <div class="card-body">
+                <h5 class="card-title">223443010</h5>
+                <p class="card-text">Emika Difani T. Barus</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/gefira.png" class="card-img-top" alt="Gheffira">
+            <div class="card-body">
+                <h5 class="card-title">223443011</h5>
+                <p class="card-text">Gheffira Putri Nur F</p>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-
     <script>
+        // Toggle Sidebar Function
         function toggleSidebar() {
             const sidebar = document.getElementById("mySidebar");
-            if (sidebar.style.left === "0px") {
-                sidebar.style.left = "-250px";
-            } else {
-                sidebar.style.left = "0px";
-            }
+            sidebar.style.left = sidebar.style.left === "0px" ? "-250px" : "0px";
         }
     </script>
 </body>
