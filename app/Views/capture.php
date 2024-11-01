@@ -140,7 +140,6 @@ $(document).ready(function() {
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
 
-    // Get access to the camera
     navigator.mediaDevices.getUserMedia({ video: true })
         .then(function(stream) {
             video.srcObject = stream;
@@ -149,7 +148,6 @@ $(document).ready(function() {
             console.error("Error accessing the camera: ", error);
         });
 
-    // Capture the image from the video
     $('#capture').on('click', function() {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
@@ -157,21 +155,29 @@ $(document).ready(function() {
         
         const imageData = canvas.toDataURL('image/png');
         $('#preview').attr('src', imageData);
-        $('#captureModal').modal('show'); // Show the modal
+        $('#captureModal').modal('show'); 
     });
 
-    // Retake the image
     $('#retake').on('click', function() {
-        $('#captureModal').modal('hide'); // Hide the modal
+        $('#captureModal').modal('hide'); 
     });
 
-    // Save the image (you can customize this functionality)
     $('#save').on('click', function() {
         const imageData = $('#preview').attr('src');
-        const link = document.createElement('a');
-        link.href = imageData;
-        link.download = 'captured_image.png';
-        link.click();
+        //Perubahan start dari sini
+    $.ajax({
+        url: '/wedding/addcapture',
+        method: 'POST',
+        data: {
+        image: imageData
+    },
+    success: function(response) {
+        alert('Image saved');
+    },
+    error: function(error) {
+        alert('Failed to save image');
+    }
+});
     }); 
 
 });
@@ -188,9 +194,9 @@ $(document).ready(function() {
         function toggleSidebar() {
             const sidebar = document.getElementById("mySidebar");
             if (sidebar.style.left === "0px") {
-                sidebar.style.left = "-250px"; // Hide the sidebar
+                sidebar.style.left = "-250px"; 
             } else {
-                sidebar.style.left = "0px"; // Show the sidebar
+                sidebar.style.left = "0px"; 
             }
         }
     </script>

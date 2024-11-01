@@ -90,6 +90,7 @@
                     <tr>
                         <th>Nama Tamu</th>
                         <th>Relasi Tamu</th>
+                        <th>Pesan</th>
                     </tr>
                 </thead>
                 <tbody>

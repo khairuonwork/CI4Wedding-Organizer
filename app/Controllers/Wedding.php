@@ -178,4 +178,28 @@ class Wedding extends BaseController
     {
         return view('about'); 
     }
+
+
+    //Capture
+    public function savecaptureimage()
+    {
+        $imageData = $this->request->getPost('image');
+    list($type, $imageData) = explode(';', $imageData);
+    list(, $imageData) = explode(',', $imageData);
+    $imageData = base64_decode($imageData);
+
+    $DirectoryProject = 'C:/Programming/laragon/www/PBO/ci4wedding-organizer/public/imagestest/'; 
+    $filename = 'test' . time() . '.png';
+    $filePath = $DirectoryProject . $filename;
+
+    if (!is_dir($DirectoryProject)) {
+        mkdir($DirectoryProject, 0755, true);
+    }
+
+    if (file_put_contents($filePath, $imageData)) {
+        return $this->response->setStatusCode(200)->setBody('sukses ' . $filePath); //200 itu success
+    } else {
+        return $this->response->setStatusCode(500)->setBody('gagal'); //500 fail
+    }
+    }
 }

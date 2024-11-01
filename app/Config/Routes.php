@@ -38,3 +38,5 @@ $routes->get('/wedding/pesan', 'Wedding::pesan');
 // $routes->get('/wedding/roles', 'Wedding::roles');
 // $routes->get('/wedding/rundown', 'Wedding::rundown');
 // $routes->get('/wedding/guests', 'Wedding::list_tamu');
+
+$routes->post('/wedding/addcapture', 'Wedding::savecaptureimage');
